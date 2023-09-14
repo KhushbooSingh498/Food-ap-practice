@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding:10px  20px;
+}
+
+.logo{
+    /* aspect-ratio: 2/1; */
+    height: 100px;
+    overflow: hidden;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.nav-items{
+    width: calc(100% - 200px);
+}
+.nav-items ul{
+    width: 100%;
+    font-size: 1.125rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+
+}
+
+.body{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.restarant-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+.retaurant-card{
+    width: 33.33%;
+    background-color: #f1f1f2;
+    border: 1px solid grey;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+.card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
