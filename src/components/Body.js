@@ -92,6 +92,11 @@ const Body =()=>{
     // we will use mockdate in useState
     // const [listOfRest, setListOfRest] = useState(restList);
     const [listOfRest, setListOfRest] = useState([]);
+
+    const [filteredList, setFilterList] = useState([]);
+
+    const [inputText, setInputText] = useState("");
+    console.log('body renderd')
     /*let newRestList = [
         {
             info: {
@@ -186,21 +191,41 @@ const Body =()=>{
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6329734&lng=77.0188755&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
         const json = await data.json();
-        console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json);
 
         setListOfRest(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+
+        setFilterList(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
     }
 
     // till loading data
-
+    // this is Conditional rendering
+    /*
     if (listOfRest.length === 0){
         // return <h1>Loading....</h1>
         return <Shimmer />
     }
-    return (
+    */
+    return (listOfRest.length === 0) ? <Shimmer /> : (
         <div className="body">
-            {/* <div className="search-box">Search</div> */}
             <div className="filter">
+                <div className="search-box">
+                    <input type="text" value={inputText} onChange={(e)=>{
+                        setInputText(e.target.value)
+                    }}></input>
+                    <button onClick={()=>{
+                        //filter the Restraunt cards and update Ui
+                        //serch text
+
+                        const filterdRest = listOfRest.filter((res)=>{
+                            return res.info.name.toLowerCase().includes(inputText.toLowerCase());
+                        })
+                        
+
+                        setFilterList(filterdRest);
+                        console.log(inputText)
+                    }}>Search</button>
+                </ div>
                 <button className="filter-btn" onClick={() => {
                     //WE CANNOT DO THIS
                     // newRestList = newRestList.filter((res) => res.info.avgRating > 4);
@@ -213,7 +238,7 @@ const Body =()=>{
                  {/* <RestaurantCards resData={restList[0]}/> not a good way give array indexing */}
 
                  {
-                   listOfRest.map(resturant => (
+                   filteredList.map(resturant => (
                    <RestaurantCards key={resturant.info.id} resData= {resturant}/>)) 
                  }
             </div>

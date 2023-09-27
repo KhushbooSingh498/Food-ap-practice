@@ -66,9 +66,12 @@ body{
     object-fit: cover;
     object-position: center;
 }
-
+.filter{
+    display: flex;
+    align-items: center;
+}
 .filter-btn{
-    margin: 10px 0;
+    margin: 10px 10px;
     display: block;
     cursor: pointer;
 }
@@ -82,4 +85,15 @@ body{
     height: 200px;
     margin: 20px;
     background-color: grey;
+}
+
+.login{
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.login:hover{
+    background-color: aqua;
+    transition: all 0.3s ease-in-out;
 }
