@@ -2,6 +2,7 @@ import RestaurantCards from "./RestaurantCards";
 import restList  from "../utils/moxkData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body =()=>{
     //Locale state variable = super powerful variable;
 
@@ -239,7 +240,9 @@ const Body =()=>{
 
                  {
                    filteredList.map(resturant => (
-                   <RestaurantCards key={resturant.info.id} resData= {resturant}/>)) 
+                  <Link to={"/restaurant/" + resturant.info.id} key={resturant.info.id}>
+                  <RestaurantCards  resData= {resturant}/>
+                  </Link>)) 
                  }
             </div>
         </div>
