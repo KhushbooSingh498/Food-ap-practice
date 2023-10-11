@@ -3,6 +3,8 @@ import restList  from "../utils/moxkData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body =()=>{
     //Locale state variable = super powerful variable;
 
@@ -97,7 +99,9 @@ const Body =()=>{
     const [filteredList, setFilterList] = useState([]);
 
     const [inputText, setInputText] = useState("");
-    console.log('body renderd')
+    console.log('body renderd');
+
+    const status = useOnlineStatus();
     /*let newRestList = [
         {
             info: {
@@ -194,9 +198,9 @@ const Body =()=>{
         const json = await data.json();
         console.log(json);
 
-        setListOfRest(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRest(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
 
-        setFilterList(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+        setFilterList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
     }
 
     // till loading data
@@ -207,6 +211,9 @@ const Body =()=>{
         return <Shimmer />
     }
     */
+
+    if(status === false) return (<h1>You're offline</h1>)
+
     return (listOfRest.length === 0) ? <Shimmer /> : (
         <div className="body">
             <div className="filter">

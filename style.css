@@ -97,3 +97,9 @@ body{
     background-color: aqua;
     transition: all 0.3s ease-in-out;
 }
+
+.user-card{
+    border: 1px solid grey;
+    padding: 20px 25px;
+    margin: 10px 20px;
+}
